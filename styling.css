@@ -27,6 +27,9 @@ body, html {
     padding: 10px 0;
     background: rgba(0, 0, 0, 0.7);
     z-index: 1000;
+    border-bottom: 2px solid #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
 }
 
 #toolbar img, #toolbar a, #toolbar button {
@@ -38,6 +41,15 @@ body, html {
 
 #toolbar a:hover, #toolbar button:hover {
     text-decoration: underline;
+}
+
+#toolbar a, #toolbar button {
+    transition: transform 0.3s, color 0.3s;
+}
+
+#toolbar a:hover, #toolbar button:hover {
+    transform: scale(1.1);
+    color: #4CAF50;
 }
 
 #hireMe_btn {
@@ -52,10 +64,12 @@ body, html {
     margin: 4px 2px; /* Some margin */
     cursor: pointer; /* Pointer/hand icon */
     border-radius: 5px; /* Rounded corners */
+    transition: transform 0.3s, background-color 0.3s;
 }
 
 #hireMe_btn:hover {
     background-color: #45a049; /* Darker green on hover */
+    transform: scale(1.1);
 }
 
 section {
@@ -70,42 +84,48 @@ section {
 }
 
 .home-section {
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    color: white;
+    background: url('path-to-your-background-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: rgb(6, 19, 138);
     text-align: center;
-    padding: 50px 20px;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 100px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out;
+}
+
+.home-section h1, .home-section h3, .home-section p {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .home-section .headline {
     font-size: 3em;
     margin-bottom: 0.5em;
-    animation: fadeIn 2s ease-in-out;
+    animation: slideInLeft 1s ease-in-out;
 }
 
 .home-section .main-title {
     font-size: 2.5em;
     margin-bottom: 0.5em;
-    animation: slideIn 2s ease-in-out;
+    animation: slideInRight 1s ease-in-out;
 }
 
 .home-section .sub-title {
-    font-size: 1.8em;
+    font-size: 1.5em;
     margin-bottom: 1em;
-    animation: fadeIn 2.5s ease-in-out;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 .home-section .skills-list {
     font-size: 1.2em;
     margin-bottom: 1em;
-    animation: slideIn 2.5s ease-in-out;
+    animation: fadeIn 2s ease-in-out;
 }
 
 .home-section .description {
-    font-size: 1.1em;
+    font-size: 1.2em;
     margin-bottom: 1em;
-    animation: fadeIn 3s ease-in-out;
+    animation: fadeIn 2.5s ease-in-out;
 }
 
 .home-section .contact-button {
@@ -120,7 +140,13 @@ section {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px;
-    animation: fadeIn 3.5s ease-in-out;
+    transition: transform 0.3s, background-color 0.3s;
+    animation: fadeIn 3s ease-in-out;
+}
+
+.home-section .contact-button:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
 }
 
 #profile_icon_css {
@@ -129,6 +155,14 @@ section {
     left: 10px;
     width: 50px; /* Adjust the size as needed */
     height: auto;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#profile_icon_css:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 .skill-box {
@@ -281,7 +315,28 @@ section {
     }
 }
 
-/* Animations */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -291,13 +346,30 @@ section {
     }
 }
 
-@keyframes slideIn {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
+/* Falling Leaves */
+#falling-leaves {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2000;
+}
+
+.leaf {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: url("images/leaf.png"); /* Add the path to your leaf image */
+    background-size: cover;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100%) rotate(0deg);
     }
-    to {
-        transform: translateY(0);
-        opacity: 1;
+    100% {
+        transform: translateY(100vh) rotate(360deg);
     }
 }
