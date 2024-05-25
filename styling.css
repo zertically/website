@@ -8,9 +8,23 @@ body, html {
     color: black;
 }
 
-body.dark-mode {
-    background-color: black;
-    color: white;
+/* Custom Scrollbar */
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 6px;
+    border: 3px solid #f1f1f1;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
 }
 
 #backgroundCanvas {
@@ -22,6 +36,7 @@ body.dark-mode {
     z-index: -1;
 }
 
+/* Modern toolbar with wavy animation */
 #toolbar {
     position: fixed;
     top: 0;
@@ -30,11 +45,25 @@ body.dark-mode {
     justify-content: center;
     align-items: center;
     padding: 10px 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: linear-gradient(270deg, #FF3F8E, #04C2C9, #2E55C1);
+    background-size: 600% 600%;
+    animation: wave 8s ease infinite;
     z-index: 1000;
     border-bottom: 2px solid #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s;
+}
+
+@keyframes wave {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 #toolbar img, #toolbar a, #toolbar button {
@@ -158,7 +187,7 @@ section {
     position: absolute;
     top: 10px;
     left: 10px;
-    width: 50px; /* Adjust the size as needed */
+    width: 50px;
     height: auto;
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -170,6 +199,7 @@ section {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
+/* Skill Box Styling */
 .skill-box {
     background: rgba(255, 255, 255, 0.2);
     padding: 20px;
@@ -193,6 +223,7 @@ section {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
+/* Portfolio Container */
 .portfolio-container {
     display: flex;
     flex-wrap: wrap;
@@ -237,30 +268,31 @@ section {
     text-decoration: underline;
 }
 
+/* Vouch Image */
 .vouch-img {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Modal styles */
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1001; 
+    display: none;
+    position: fixed;
+    z-index: 1001;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; 
-    background-color: rgba(0,0,0,0.9); 
-    padding-top: 60px; 
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+    padding-top: 60px;
 }
 
 .modal-content {
     background-color: #333;
-    margin: 5% auto; 
+    margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; 
+    width: 80%;
     max-width: 700px;
     border-radius: 10px;
     position: relative;
@@ -351,67 +383,126 @@ section {
     }
 }
 
-/* Falling Leaves */
-#falling-leaves {
+/* Dark Mode Toggle Button */
+#toggle-dark-mode {
     position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 2000;
-}
-
-.leaf {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-image: url("images/leaf.png"); /* Add the path to your leaf image */
-    background-size: cover;
-    animation: fall linear infinite;
-}
-
-@keyframes fall {
-    0% {
-        transform: translateY(-100%) rotate(0deg);
-    }
-    100% {
-        transform: translateY(100vh) rotate(360deg);
-    }
-}
-
-/* Dark/Light Mode Toggle Button */
-.toggle-theme-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    background-color: #4CAF50;
     border: none;
     border-radius: 50%;
-    background-color: #4CAF50;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 0.3s, background-color 0.3s;
+    cursor: pointer;
     z-index: 3000;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-.toggle-theme-btn:hover {
-    transform: scale(1.1);
+#toggle-dark-mode:hover {
     background-color: #45a049;
+    transform: scale(1.1);
 }
 
-.toggle-theme-btn img {
-    width: 20px;
-    height: 20px;
+#toggle-dark-mode img {
+    width: 30px;
+    height: 30px;
 }
 
-body.dark-mode #toggle-theme-btn {
-    background-color: #FFD700; /* Gold color for the button in dark mode */
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: black;
+    color: white;
 }
 
-body.dark-mode #toggle-theme-btn img {
-    content: url("images/moon-icon.png"); /* Change icon to moon in dark mode */
+body.dark-mode #toolbar {
+    background: rgba(255, 255, 255, 0.7);
+    border-bottom: 2px solid #333;
+}
+
+body.dark-mode #toolbar a, 
+body.dark-mode #toolbar button {
+    color: black;
+}
+
+body.dark-mode #toolbar a:hover, 
+body.dark-mode #toolbar button:hover {
+    color: #4CAF50;
+}
+
+body.dark-mode .home-section {
+    color: white;
+}
+
+body.dark-mode .home-section h1, 
+body.dark-mode .home-section h3, 
+body.dark-mode .home-section p {
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+body.dark-mode .skill-box {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .skill-box.hover {
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.5);
+}
+
+body.dark-mode .portfolio-item {
+    background: #999;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .portfolio-item:hover {
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.5);
+}
+
+body.dark-mode .modal-content {
+    background-color: #999;
+}
+
+body.dark-mode .close {
+    color: #333;
+}
+
+body.dark-mode .close:hover, 
+body.dark-mode .close:focus {
+    color: white;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+    #toolbar {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    #toolbar img, #toolbar a, #toolbar button {
+        margin: 10px 0;
+    }
+
+    .home-section {
+        padding: 50px 20px;
+    }
+
+    .skill-box {
+        width: 90%;
+    }
+
+    .portfolio-container {
+        flex-direction: column;
+    }
+
+    .portfolio-item {
+        width: 90%;
+    }
+
+    .contact-button {
+        width: 80%;
+        padding: 15px 20px;
+        font-size: 18px;
+    }
 }
