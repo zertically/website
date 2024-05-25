@@ -36,7 +36,6 @@ body::-webkit-scrollbar-thumb:hover {
     z-index: -1;
 }
 
-/* Modern toolbar with wavy animation */
 #toolbar {
     position: fixed;
     top: 0;
@@ -66,6 +65,7 @@ body::-webkit-scrollbar-thumb:hover {
     }
 }
 
+
 #toolbar img, #toolbar a, #toolbar button {
     margin: 0 15px;
     color: white;
@@ -87,7 +87,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 #hireMe_btn {
-    background-color: #4CAF50; /* Green background */
+    background-color: #1a15b6; /* Green background */
     border: none; /* Remove borders */
     color: white; /* White text */
     padding: 10px 20px; /* Some padding */
@@ -163,7 +163,7 @@ section {
 }
 
 .home-section .contact-button {
-    background-color: #4CAF50;
+    background-color: #252bd9;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -268,8 +268,55 @@ section {
     text-decoration: underline;
 }
 
-/* Vouch Image */
+/* Vouch Box Styling */
+.vouch-box {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 8px;
+    width: 80%;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+.vouch-box h2 {
+    margin: 0 0 10px;
+}
+
+.vouch-box ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.vouch-box li {
+    margin: 5px 0;
+}
+
+.vouch-box .toggle-vouch {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.vouch-box .toggle-vouch:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+}
+
 .vouch-img {
+    display: none;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
