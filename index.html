@@ -27,9 +27,9 @@
 <!-- Falling Leaves Animation -->
 <div id="falling-leaves"></div>
 
-<!-- Toggle Button for Falling Leaves -->
-<button id="toggle-leaves-btn">
-    <img src="images/leaf-icon.png" alt="Toggle Leaves">
+<!-- Toggle Button for Dark/Light Mode -->
+<button id="toggle-theme-btn" class="toggle-theme-btn">
+    <img src="images/theme-icon.png" alt="Toggle Theme">
 </button>
 
 <!-- Content Sections -->
@@ -122,15 +122,15 @@
 const canvas = document.getElementById('backgroundCanvas');
 const ctx = canvas.getContext('2d');
 let width, height;
+let particles = [];
+let particleCount = 100;
+let colors = ['#FF3F8E', '#04C2C9', '#2E55C1'];
+let darkMode = false;
 
 function setup() {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
 }
-
-const particles = [];
-const particleCount = 100;
-const colors = ['#FF3F8E', '#04C2C9', '#2E55C1'];
 
 class Particle {
     constructor() {
@@ -180,6 +180,7 @@ function clearCanvas() {
 }
 
 function createParticles() {
+    particles = [];
     for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
     }
@@ -293,15 +294,54 @@ document.addEventListener('DOMContentLoaded', () => {
         fallingLeaves.appendChild(leaf);
     }
 
-    // Toggle falling leaves
-    const toggleLeavesBtn = document.getElementById('toggle-leaves-btn');
-    let leavesVisible = true;
+    // Toggle theme button
+    const toggleThemeBtn = document.getElementById('toggle-theme-btn');
+    const body = document.body;
 
-    toggleLeavesBtn.addEventListener('click', () => {
-        leavesVisible = !leavesVisible;
-        fallingLeaves.style.display = leavesVisible ? 'block' : 'none';
+    toggleThemeBtn.addEventListener('click', () => {
+        darkMode = !darkMode;
+        if (darkMode) {
+            body.classList.add('dark-mode');
+            colors = ['#FFFFFF'];
+        } else {
+            body.classList.remove('dark-mode');
+            colors = ['#FF3F8E', '#04C2C9', '#2E55C1'];
+        }
+        createParticles();
     });
 });
+
+// Additional CSS for dark mode
+const darkModeStyles = document.createElement('style');
+darkModeStyles.innerHTML = `
+body.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+body.dark-mode .home-section {
+    background: black;
+    color: white;
+}
+
+body.dark-mode .home-section .headline, 
+body.dark-mode .home-section .main-title, 
+body.dark-mode .home-section .sub-title, 
+body.dark-mode .home-section .skills-list, 
+body.dark-mode .home-section .description {
+    text-shadow: none;
+}
+
+body.dark-mode .home-section .contact-button {
+    background-color: white;
+    color: black;
+}
+
+body.dark-mode .home-section .contact-button:hover {
+    background-color: #ccc;
+}
+`;
+document.head.appendChild(darkModeStyles);
 </script>
 
 </body>
