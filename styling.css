@@ -8,6 +8,11 @@ body, html {
     color: black;
 }
 
+body.dark-mode {
+    background-color: black;
+    color: white;
+}
+
 #backgroundCanvas {
     position: fixed;
     top: 0;
@@ -346,26 +351,6 @@ section {
     }
 }
 
-/* Dark mode button */
-.toggle-theme-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 1001;
-    transition: transform 0.3s, background-color 0.3s;
-}
-
-.toggle-theme-btn:hover {
-    background-color: #45a049;
-    transform: scale(1.1);
-}
-
 /* Falling Leaves */
 #falling-leaves {
     position: fixed;
@@ -380,7 +365,7 @@ section {
     position: absolute;
     width: 30px;
     height: 30px;
-    background-image: url("images/leaf.png");
+    background-image: url("images/leaf.png"); /* Add the path to your leaf image */
     background-size: cover;
     animation: fall linear infinite;
 }
@@ -392,4 +377,41 @@ section {
     100% {
         transform: translateY(100vh) rotate(360deg);
     }
+}
+
+/* Dark/Light Mode Toggle Button */
+.toggle-theme-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s, background-color 0.3s;
+    z-index: 3000;
+}
+
+.toggle-theme-btn:hover {
+    transform: scale(1.1);
+    background-color: #45a049;
+}
+
+.toggle-theme-btn img {
+    width: 20px;
+    height: 20px;
+}
+
+body.dark-mode #toggle-theme-btn {
+    background-color: #FFD700; /* Gold color for the button in dark mode */
+}
+
+body.dark-mode #toggle-theme-btn img {
+    content: url("images/theme-icon.png"); /* Change icon to moon in dark mode */
 }
