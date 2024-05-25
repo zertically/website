@@ -47,4 +47,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     toggleThemeBtn.addEventListener('click', toggleDarkMode);
 });
-
