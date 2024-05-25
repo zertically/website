@@ -413,5 +413,5 @@ body.dark-mode #toggle-theme-btn {
 }
 
 body.dark-mode #toggle-theme-btn img {
-    content: url("images/theme-icon.png"); /* Change icon to moon in dark mode */
+    content: url("images/moon-icon.png"); /* Change icon to moon in dark mode */
 }
