@@ -96,11 +96,24 @@
 </section>
 <section id="vouches">
     <h1>Vouches</h1>
-    <p>
+    <div class="vouch-box">
+        <h2>Turtleman/Epo</h2>
+        <button class="toggle-vouch">Show Picture</button>
         <img src="images/turtle_vouch.png" class="vouch-img">
+
+    </div>
+    <div class="vouch-box">
+        <h2>Joe/Joe James</h2>
+        <button class="toggle-vouch">Show Picture</button>
         <img src="images/joe_vouch.png" class="vouch-img">
+
+    </div>
+    <div class="vouch-box">
+        <h2>Parlyy, Yoon and RealBlazez</h2>
+        <button class="toggle-vouch">Show Picture</button>
         <img src="images/yoon-pooly-blazez_vouch.png" class="vouch-img">
-    </p>
+
+    </div>
 </section>
 
 <!-- Modal for project details -->
@@ -291,6 +304,20 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleDarkModeBtn.querySelector('img').src = icon;
         particleColor = darkMode ? '#ffffff' : '#04C2C9';
         createParticles();
+    });
+
+    // Toggle vouch images
+    document.querySelectorAll('.toggle-vouch').forEach(button => {
+        button.addEventListener('click', () => {
+            const img = button.nextElementSibling;
+            if (img.style.display === 'none') {
+                img.style.display = 'block';
+                button.textContent = 'Hide Picture';
+            } else {
+                img.style.display = 'none';
+                button.textContent = 'Show Picture';
+            }
+        });
     });
 });
 </script>
