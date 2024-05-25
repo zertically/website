@@ -33,4 +33,18 @@ document.addEventListener('DOMContentLoaded', () => {
         particleColor = darkMode ? '#ffffff' : '#04C2C9';
         createParticles();
     });
+
+    // Toggle vouch images
+    document.querySelectorAll('.toggle-vouch').forEach(button => {
+        button.addEventListener('click', () => {
+            const img = button.nextElementSibling;
+            if (img.style.display === 'none') {
+                img.style.display = 'block';
+                button.textContent = 'Hide Picture';
+            } else {
+                img.style.display = 'none';
+                button.textContent = 'Show Picture';
+            }
+        });
+    });
 });
