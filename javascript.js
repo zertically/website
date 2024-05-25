@@ -21,29 +21,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     type();
 
-    // Falling leaves animation
-    const fallingLeaves = document.getElementById('falling-leaves');
-    const leafCount = 20;
+    // Toggle dark mode
+    const toggleDarkModeBtn = document.getElementById('toggle-dark-mode');
+    let darkMode = false;
 
-    for (let i = 0; i < leafCount; i++) {
-        const leaf = document.createElement('div');
-        leaf.classList.add('leaf');
-        leaf.style.left = `${Math.random() * 100}vw`;
-        leaf.style.animationDuration = `${Math.random() * 2 + 3}s`; // 3 to 5 seconds
-        leaf.style.animationDelay = `${Math.random() * 2}s`;
-        fallingLeaves.appendChild(leaf);
-    }
-
-    // Toggle dark/light mode
-    const toggleThemeBtn = document.getElementById('toggle-theme-btn');
-    let isDarkMode = false;
-
-    function toggleDarkMode() {
-        isDarkMode = !isDarkMode;
+    toggleDarkModeBtn.addEventListener('click', () => {
+        darkMode = !darkMode;
         document.body.classList.toggle('dark-mode');
-        particles.length = 0; // Clear the current particles
-        createParticles(isDarkMode ? colorsDarkMode : colorsLightMode); // Create new particles with the appropriate colors
-    }
-
-    toggleThemeBtn.addEventListener('click', toggleDarkMode);
+        const icon = darkMode ? 'images/sun-icon.png' : 'images/moon-icon.png';
+        toggleDarkModeBtn.querySelector('img').src = icon;
+        particleColor = darkMode ? '#ffffff' : '#04C2C9';
+        createParticles();
+    });
 });
