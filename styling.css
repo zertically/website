@@ -460,14 +460,28 @@ section {
 
 /* Dark Mode Styles */
 body.dark-mode {
-    background-color: black;
-    color: white;
-}
-
-body.dark-mode #toolbar {
-    background: rgba(255, 255, 255, 0.7);
-    border-bottom: 2px solid #333;
-}
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  body.dark-mode .toolbar {
+    background: linear-gradient(270deg, #ff7e5f, #feb47b);
+    background-size: 400% 400%;
+    animation: waveAnimation 8s ease infinite;
+  }
+  
+  @keyframes waveAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
 
 body.dark-mode #toolbar a, 
 body.dark-mode #toolbar button {
